@@ -1,0 +1,1 @@
+ENV["ELASTICSEARCH_URL"] = "https://user:password@host:port"
