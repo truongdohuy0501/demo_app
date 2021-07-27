@@ -23,4 +23,4 @@ class Article < ApplicationRecord
     end
   end
 end
-Article.import # for auto sync model with elastic search
+Article.import(force: true) # for auto sync model with elastic search
