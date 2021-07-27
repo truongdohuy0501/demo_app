@@ -1,0 +1,20 @@
+<h1> Articles </h1>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li><%= article.title %><%= link_to 'Delete', article_path(id: article.id), class: 'button', method: 'delete', target: '_blank' %></li>
+  <% end %>
+</ul>
+
+<style type="text/css">  
+  .button {
+    content:attr(data-hover);
+    background-color: #d2322d;
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 4px;
+    color:#fff;
+    margin-right:10px;
+    margin: 10px 10px;
+  }
+</style>  
