@@ -22,5 +22,6 @@ class Article < ApplicationRecord
       indexes :text, analyzer: 'english'
     end
   end
+  Article.__elasticsearch__.create_index!
+  Article.import # for auto sync model with elastic search
 end
-Article.import(force: true) # for auto sync model with elastic search
