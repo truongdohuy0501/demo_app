@@ -4,6 +4,10 @@ class Article < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
+  has_many :posts,  dependent: :destroy
+  # validates :name, presence: true, uniqueness: true
+  # validates :facts, presence: true
+
   def self.search(query)
     __elasticsearch__.search(
       {

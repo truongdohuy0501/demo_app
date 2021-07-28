@@ -8,4 +8,13 @@
   <%= @article&.text %>
 </p>
 
+
+<div data-controller="articles">
+  <button data-action="articles#index">Show Older Posts</button>
+
+  <div data-target="articles.show" style="visibility:hidden">
+    <%= render 'articles/all' %>
+  </div>
+</div>
+
 <%= link_to '<- Back', articles_path %>

@@ -1,0 +1,17 @@
+<%= form_for :post, url: article_posts_path do |f| %>
+  <p>
+    <h2>Title</h2>
+    <h3><%= @article.title %></h3>
+  </p>
+
+  <p>
+    <%= f.label :post %><br>
+    <%= f.text_area :post %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to '<- Back', articles_path %>

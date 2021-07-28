@@ -1,0 +1,9 @@
+<% for post in @article.posts  %>
+  <ul>
+   <li class="post">
+      <%= post.body %>
+      <%= button_tag "Remove Post", data: { controller: "posts", action: "posts#remove" } %>
+      <%= button_tag "Upvote Post", data: { controller: "posts", action: "posts#upvote" } %>
+    </li>
+  </ul>
+<% end %>
