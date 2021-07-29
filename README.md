@@ -26,20 +26,21 @@ Build the index:
 heroku run rake searchkick:reindex CLASS=Articles
 ```
 
-#### Resource Path
-# Root
+## Resource Path
+
+### Root
   Article#index 
 
-# New Article
+### New Article
   /articles/new
 
-# Show Article
+### Show Article
   /articles/:id
 
-# New Post
+### New Post
   /articles/:article_id/post/new
 
-# Search Article (Title or Text)
+### Search Article (Title or Text)
   /search
 
 ...
