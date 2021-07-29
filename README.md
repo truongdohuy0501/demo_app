@@ -1,24 +1,45 @@
-# README
+# Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Blog in Heroku](https://guarded-stream-48915.herokuapp.com/)
 
-Things you may want to cover:
+### Install dependencies
 
-* Ruby version
+Using [Brew](https://brew.sh/) and [Yarn](https://github.com/yarnpkg/yarn):
 
-* System dependencies
+```shell
+ brew update
+ brew install elasticsearch
+ brew services start elasticsearch
+```
 
-* Configuration
+### Deploying to Heroku
 
-* Database creation
+Using Bonsai addon:
 
-* Database initialization
+```shell
+heroku addons:create bonsai
+```
 
-* How to run the test suite
+Build the index:
 
-* Services (job queues, cache servers, search engines, etc.)
+```shell
+heroku run rake searchkick:reindex CLASS=Articles
+```
 
-* Deployment instructions
+#### Resource Path
+# Root
+  Article#index 
 
-* ...
+# New Article
+  /articles/new
+
+# Show Article
+  /articles/:id
+
+# New Post
+  /articles/:article_id/post/new
+
+# Search Article (Title or Text)
+  /search
+
+...
