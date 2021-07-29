@@ -5,19 +5,19 @@ export default class extends Controller {
 
   addBody() {
     let content = this.bodyTarget.value;
-    this.addTarget.insertAdjacentHTML('beforebegin', "<li>" + content + "</li>");
+    this.addTarget.insertAdjacentHTML('beforebegin', "<li class='post'>" + content + "</li>");
   }
 
   showAll() {
     this.showTarget.style.visibility = "visible";
   }
 
-  upvote() {
+  upvote(event) {
     let post = event.target.closest(".post");
     post.insertAdjacentHTML('beforeend', '<i class="fa fa-check-circle"></i>');
   }
 
-  remove() {
+  remove(event) {
     let post = event.target.closest(".post");
     post.style.visibility = "hidden";
   }

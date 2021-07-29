@@ -8,13 +8,26 @@
   <%= @article&.text %>
 </p>
 
+<h2>Posts</h2>
 
-<div data-controller="articles">
-  <button data-action="articles#index">Show Older Posts</button>
+<div data-controller="posts">
+  <%= form_tag article_posts_path(@article.id), method: :post do %>
+    <label>Post title:</label><br>
+    <textarea id="post_title" name="post[body]" data-posts-target="body" ></textarea><br>
 
-  <div data-target="articles.show" style="visibility:hidden">
+    <input type="submit" value="Submit Post" data-action="posts#addBody">
+  <% end %>
+
+
+  <%= render 'articles/last_post' %>
+
+
+  <%= link_to '<- Back', articles_path %>
+
+  <button data-action="posts#showAll">Show Older Posts</button>
+
+  <div data-posts-target="show" style="visibility:hidden">
     <%= render 'articles/all' %>
   </div>
 </div>
 
-<%= link_to '<- Back', articles_path %>

@@ -16,10 +16,12 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @articles = Article.new article_params
-    if @articles.save
-      redirect_to @articles
+    @article = Article.new article_params
+    if @article.valid?
+      @article.save
+      redirect_to @articles, notice: 'Article was successfully created.'
     else
+      # flash.now[:notice] =  @article.errors.full_messages.to_sentence
       render 'new'
     end
   end

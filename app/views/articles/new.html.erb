@@ -15,9 +15,12 @@
     <% end %>
 
     <p>
+      <%= flash[:notice] %><br>
+    </p>
+    <p>
       <%= f.label :title %><br>
-      <%= f.text_field :title, 'data-target' => "articles.title", 'data-action' => 'keyup->articles#countCharacters' %>
-      Characters: <span data-target='articles.counter'><%= @article&.title&.to_s&.size %></span>
+      <%= f.text_field :title, 'data-articles-target' => "title", 'data-action' => 'keyup->articles#countCharacters' %>
+      Characters: <span data-articles-target='counter'><%= @article&.title&.to_s&.size %></span>
     </p>
 
     <p>
