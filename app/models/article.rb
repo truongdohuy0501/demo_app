@@ -3,6 +3,7 @@ require 'elasticsearch/model'
 class Article < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
+  searchkick
 
   has_many :posts,  dependent: :destroy
   validates :title, presence: true, uniqueness: true
