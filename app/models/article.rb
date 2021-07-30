@@ -3,32 +3,13 @@ require 'elasticsearch/model'
 class Article < ApplicationRecord
   # include Elasticsearch::Model
   # include Elasticsearch::Model::Callbacks
-  searchkick
+  # searchkick
+  searchkick word_start: [:title], highlight: [:title]
+  # searchkick autocomplete: [:title]
+  # searchkick  highlight: [:title]
 
   has_many :posts,  dependent: :destroy
   validates :title, presence: true, uniqueness: true
-  # validates :facts, presence: true
-  class << self
-    def query(params)
-      articles = self.active_record_search(params) # filter by other parameters first
-
-      # return right there if search is blank
-
-      # otherwise pass already filtered set to elastic search for further filtering
-      article_ids = articles.pluck(:id)
-      self.elastic_search(params, article_ids)
-    end
-
-    def elastic_search(params, listing_ids)
-      elastic_query = {
-        query: query&.first,
-        fields: ['title^10', 'text']
-      }
-  
-      self.search(params[:search], elastic_query)
-    end
-  end
-
 
   # def self.search(query)
   #   __elasticsearch__.search(
