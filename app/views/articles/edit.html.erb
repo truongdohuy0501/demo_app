@@ -1,5 +1,7 @@
 <h1>Edit Article</h1>
-<div data-controller="articles">
+<div data-controller="articles" 
+    data-action="item:add->articles#refreshTotal"
+     data-articles-counter="0">
   <%= form_for :article, url: articles_path, data: {action: "articles#addbody"} do |f| %>
     <p>
       <%= f.label :title %><br>
@@ -18,6 +20,16 @@
   <% end %>
 
   <%= link_to '<- Back', articles_path %>
+
+
+  <button data-controller="item" data-action="item#add">
+    Add
+  </button>
+
+  <div>
+    <span>No of items : </span>
+    <span data-articles-target="counterView">0</span>
+  </div>
 </div>
     
 
